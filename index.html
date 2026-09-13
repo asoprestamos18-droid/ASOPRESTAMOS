@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASOPRESTAMOS - Préstamos Personales</title>
+  <!-- Iconos FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0e5860;       /* Verde azulado principal */
+      --primary-dark: #083b41;  
+      --accent: #d4a343;        /* Dorado */
+      --accent-hover: #b88a32;  
+      --bg-light: #f4f8f8;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* HERO SECTION CON LOGO PROTAGONISTA */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 3.5rem 1.5rem 5rem;
+      text-align: center;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .main-logo {
+      width: 100%;
+      max-width: 260px; /* Tamaño destacado */
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      border: 2px solid var(--accent);
+      margin-bottom: 1.8rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      color: #ffffff;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #e2e8f0;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* CONTENEDOR PRINCIPAL */
+    .container {
+      max-width: 850px;
+      margin: -3.5rem auto 3rem;
+      padding: 0 1.2rem;
+    }
+
+    /* CALCULADORA CARD */
+    .calculator-card {
+      background: white;
+      padding: 2.2rem;
+      border-radius: 16px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+      border-top: 5px solid var(--accent);
+    }
+
+    .calculator-card h2 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 0.85rem;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--primary);
+    }
+
+    .result-box {
+      background: #f8fafc;
+      padding: 1.2rem;
+      border-radius: 10px;
+      text-align: center;
+      margin-top: 1.5rem;
+      border: 1px solid #e2e8f0;
+    }
+
+    .result-box p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .result-box span {
+      display: block;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-top: 0.2rem;
+    }
+
+    .btn-apply {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      background: var(--accent);
+      color: #0e5860;
+      text-align: center;
+      padding: 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-apply:hover {
+      background: var(--accent-hover);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    /* CARACTERÍSTICAS / VENTAJAS */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .feature-item {
+      background: white;
+      padding: 1.8rem 1.2rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+    }
+
+    .feature-item i {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .feature-item h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .feature-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* BOTÓN FLOTANTE DE WHATSAPP */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 32px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: var(--primary-dark);
+      color: #94a3b8;
+      font-size: 0.85rem;
+      margin-top: 4rem;
+    }
+
+    /* ADAPTABILIDAD MÓVIL */
+    @media (max-width: 600px) {
+      .main-logo { max-width: 200px; }
+      .hero h1 { font-size: 1.6rem; }
+      .hero p { font-size: 0.95rem; }
+      .calculator-card { padding: 1.5rem; }
+      .result-box span { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SECCIÓN PRINCIPAL CON LOGO PROTAGONISTA -->
+  <section class="hero">
+    <img src="logo.png" alt="ASOPRESTAMOS Logo" class="main-logo">
+    <h1>Préstamos Personales <span>Rápidos y Confiables</span></h1>
+    <p>Calcula tu cuota mensual estimada al instante y solicita tu aprobación en minutos.</p>
+  </section>
+
+  <!-- CALCULADORA INTERACTIVA -->
+  <main class="container">
+    <div class="calculator-card">
+      <h2>Simulador de Préstamo</h2>
+      
+      <div class="form-group">
+        <label for="amount">Monto Solicitado (RD$):</label>
+        <input type="number" id="amount" value="25000" step="1000" min="1000" oninput="calculateLoan()">
+      </div>
+
+      <div class="form-group">
+        <label for="months">Plazo de Pago (Meses):</label>
+        <select id="months" onchange="calculateLoan()">
+          <option value="6">6 Meses</option>
+          <option value="12" selected>12 Meses</option>
+          <option value="18">18 Meses</option>
+          <option value="24">24 Meses</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="rate">Tasa de Interés Mensual Estimada (%):</label>
+        <input type="number" id="rate" value="3.0" step="0.1" min="0.1" oninput="calculateLoan()">
+      </div>
+
+      <div class="result-box">
+        <p>CUOTA MENSUAL ESTIMADA</p>
+        <span id="monthly-payment">RD$ 0.00</span>
+      </div>
+
+      <a id="apply-btn" href="#" target="_blank" class="btn-apply">
+        <i class="fab fa-whatsapp"></i> Solicitar por WhatsApp
+      </a>
+    </div>
+
+    <!-- BENEFICIOS -->
+    <div class="features">
+      <div class="feature-item">
+        <i class="fas fa-bolt"></i>
+        <h3>Respuesta Rápida</h3>
+        <p>Evaluamos tu solicitud de inmediato sin papeleos innecesarios.</p>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-hand-holding-usd"></i>
+        <h3>Cuotas Asequibles</h3>
+        <p>Plazos y tasas ajustadas a tu capacidad financiera.</p>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Proceso Seguro</h3>
+        <p>Atención directa y confidencial para tu tranquilidad.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+  <a id="float-wa" href="#" target="_blank" class="whatsapp-btn" title="Contactar por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <footer>
+    <p>&copy; 2026 ASOPRESTAMOS. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- SCRIPT LÓGICO DE LA CALCULADORA -->
+  <script>
+    const whatsappNumber = "18295144178"; // Reemplazar con el número de Luis
+
+    function calculateLoan() {
+      const amount = parseFloat(document.getElementById('amount').value) || 0;
+      const months = parseInt(document.getElementById('months').value) || 1;
+      const monthlyRate = (parseFloat(document.getElementById('rate').value) || 0) / 100;
+
+      if (amount <= 0 || monthlyRate <= 0) {
+        document.getElementById('monthly-payment').innerText = "RD$ 0.00";
+        return;
+      }
+
+      const monthlyPayment = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -months));
+      const formattedPayment = monthlyPayment.toLocaleString('es-DO', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+      document.getElementById('monthly-payment').innerText = "RD$ " + formattedPayment;
+
+      const message = encodeURIComponent(`Hola ASOPRESTAMOS, me gustaría solicitar un préstamo de RD$ ${amount.toLocaleString('es-DO')} a un plazo de ${months} meses (Cuota estimada: RD$ ${formattedPayment}).`);
+      
+      const waLink = `https://wa.me/${whatsappNumber}?text=${message}`;
+      
+      document.getElementById('apply-btn').href = waLink;
+      document.getElementById('float-wa').href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Hola ASOPRESTAMOS, quisiera información sobre un préstamo.')}`;
+    }
+
+    calculateLoan();
+  </script>
+
+</body>
+</html>
