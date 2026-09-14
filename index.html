@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ASOPRESTAMOS - Préstamos Personales</title>
+  <title>ASOPRESTAMOS - Préstamos Personales y Garantizados</title>
   <!-- Iconos FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #0e5860;       /* Verde azulado principal */
+      --primary: #0e5860;       /* Verde azulado institucional */
       --primary-dark: #083b41;  
       --accent: #d4a343;        /* Dorado */
       --accent-hover: #b88a32;  
@@ -30,7 +30,7 @@
       line-height: 1.6;
     }
 
-    /* HERO SECTION CON LOGO PROTAGONISTA */
+    /* HERO SECTION */
     .hero {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
       color: white;
@@ -41,12 +41,12 @@
 
     .main-logo {
       width: 100%;
-      max-width: 260px; /* Tamaño destacado */
+      max-width: 230px;
       height: auto;
       border-radius: 16px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.3);
       border: 2px solid var(--accent);
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.5rem;
     }
 
     .hero h1 {
@@ -60,7 +60,7 @@
     }
 
     .hero p {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: #e2e8f0;
       max-width: 650px;
       margin: 0 auto;
@@ -73,16 +73,17 @@
       padding: 0 1.2rem;
     }
 
-    /* CALCULADORA CARD */
-    .calculator-card {
+    /* CARDS */
+    .card {
       background: white;
       padding: 2.2rem;
       border-radius: 16px;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
       border-top: 5px solid var(--accent);
+      margin-bottom: 2rem;
     }
 
-    .calculator-card h2 {
+    .card h2 {
       font-size: 1.5rem;
       color: var(--primary);
       margin-bottom: 1.5rem;
@@ -90,8 +91,18 @@
       font-weight: 700;
     }
 
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+
     .form-group {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
     }
 
     .form-group label {
@@ -126,9 +137,10 @@
     }
 
     .result-box p {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
-      font-weight: 600;
+      font-weight: 700;
+      text-transform: uppercase;
     }
 
     .result-box span {
@@ -139,8 +151,9 @@
       margin-top: 0.2rem;
     }
 
-    .btn-apply {
-      display: flex;
+    /* BOTONES */
+    .btn {
+      display: inline-flex;
       justify-content: center;
       align-items: center;
       gap: 10px;
@@ -154,56 +167,179 @@
       font-size: 1.1rem;
       font-weight: 700;
       cursor: pointer;
-      margin-top: 1.5rem;
+      margin-top: 1rem;
       text-decoration: none;
       transition: all 0.2s ease;
     }
 
-    .btn-apply:hover {
+    .btn:hover {
       background: var(--accent-hover);
       color: #ffffff;
-      transform: translateY(-2px);
     }
 
-    /* CARACTERÍSTICAS / VENTAJAS */
-    .features {
+    .btn-secondary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary-dark);
+    }
+
+    /* TARJETAS DE SERVICIOS */
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1rem;
     }
 
-    .feature-item {
-      background: white;
-      padding: 1.8rem 1.2rem;
-      border-radius: 12px;
+    .service-card {
+      background: #f8fafc;
+      padding: 1.2rem;
+      border-radius: 10px;
+      border-top: 3px solid var(--accent);
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      border: 1px solid #e2e8f0;
     }
 
-    .feature-item i {
-      font-size: 2rem;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-
-    .feature-item h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
+    .service-card i {
+      font-size: 1.8rem;
       color: var(--primary);
+      margin-bottom: 0.5rem;
     }
 
-    .feature-item p {
-      font-size: 0.9rem;
+    .service-card h4 {
+      color: var(--primary-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .service-card p {
+      font-size: 0.85rem;
       color: var(--text-muted);
     }
 
-    /* BOTÓN FLOTANTE DE WHATSAPP */
+    /* PLANILLA IMPRIMIBLE ESTÉTICA */
+    #print-sheet {
+      display: none;
+      background: white;
+      padding: 2.5rem;
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      margin-top: 2rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .sheet-header img {
+      max-width: 160px;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .sheet-title {
+      text-align: right;
+    }
+
+    .sheet-title h3 {
+      color: var(--primary);
+      font-size: 1.6rem;
+      font-weight: 800;
+    }
+
+    .sheet-title p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .sheet-section-title {
+      color: var(--primary);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 1.2rem 0 0.6rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 8px;
+    }
+
+    .sheet-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+    }
+
+    .sheet-table td {
+      padding: 0.75rem 1rem;
+      border: 1px solid #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    .sheet-table td.label {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: var(--primary-dark);
+      width: 35%;
+    }
+
+    .sheet-table td.highlight {
+      font-weight: 800;
+      color: var(--primary);
+      font-size: 1.1rem;
+      background: #f8fafc;
+    }
+
+    .signature-area {
+      margin-top: 4.5rem;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+
+    .signature-box {
+      border-top: 1.5px solid #1e293b;
+      width: 240px;
+      text-align: center;
+      padding-top: 0.6rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    /* ESTILOS DE IMPRESIÓN */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #print-sheet, #print-sheet * {
+        visibility: visible;
+      }
+      #print-sheet {
+        display: block !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        border: none;
+        padding: 0;
+        box-shadow: none;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+
+    /* BOTÓN WHATSAPP FLOTANTE */
     .whatsapp-btn {
       position: fixed;
       bottom: 25px;
-      right: 25px;
+      left: 25px;
       background-color: #25d366;
       color: white;
       width: 60px;
@@ -216,14 +352,8 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       z-index: 999;
       text-decoration: none;
-      transition: transform 0.3s ease;
     }
 
-    .whatsapp-btn:hover {
-      transform: scale(1.1);
-    }
-
-    /* FOOTER */
     footer {
       text-align: center;
       padding: 2rem 1rem;
@@ -232,119 +362,322 @@
       font-size: 0.85rem;
       margin-top: 4rem;
     }
-
-    /* ADAPTABILIDAD MÓVIL */
-    @media (max-width: 600px) {
-      .main-logo { max-width: 200px; }
-      .hero h1 { font-size: 1.6rem; }
-      .hero p { font-size: 0.95rem; }
-      .calculator-card { padding: 1.5rem; }
-      .result-box span { font-size: 1.6rem; }
-    }
   </style>
 </head>
 <body>
 
-  <!-- SECCIÓN PRINCIPAL CON LOGO PROTAGONISTA -->
-  <section class="hero">
+  <!-- HERO SECTION CON LOGO -->
+  <section class="hero no-print">
     <img src="logo.png" alt="ASOPRESTAMOS Logo" class="main-logo">
-    <h1>Préstamos Personales <span>Rápidos y Confiables</span></h1>
-    <p>Calcula tu cuota mensual estimada al instante y solicita tu aprobación en minutos.</p>
+    <h1>Soluciones Financieras <span>ASOPRESTAMOS</span></h1>
+    <p>Calcula tu préstamo, completa tu pre-solicitud e imprímela para tu cita presencial.</p>
   </section>
 
-  <!-- CALCULADORA INTERACTIVA -->
   <main class="container">
-    <div class="calculator-card">
-      <h2>Simulador de Préstamo</h2>
+    
+    <!-- 1. SIMULADOR CON NORMAS DE LUIS -->
+    <div class="card no-print">
+      <h2>1. Calculadora de Préstamo</h2>
       
-      <div class="form-group">
-        <label for="amount">Monto Solicitado (RD$):</label>
-        <input type="number" id="amount" value="25000" step="1000" min="1000" oninput="calculateLoan()">
-      </div>
+      <div class="form-grid">
+        <div class="form-group full-width">
+          <label for="loan-type">Modalidad de Préstamo:</label>
+          <select id="loan-type" onchange="calculateLoan()">
+            <option value="sam_semanal">Préstamo Tipo SAM - 10 Semanas (12% Interés)</option>
+            <option value="sam_quincenal">Préstamo Tipo SAM - 5 Quincenas (12% Interés)</option>
+            <option value="arrendado">Dinero Arrendado - Pago Único (20% Interés)</option>
+            <option value="garantia">Préstamo con Garantía / Pertenencias (15% Interés)</option>
+          </select>
+        </div>
 
-      <div class="form-group">
-        <label for="months">Plazo de Pago (Meses):</label>
-        <select id="months" onchange="calculateLoan()">
-          <option value="6">6 Meses</option>
-          <option value="12" selected>12 Meses</option>
-          <option value="18">18 Meses</option>
-          <option value="24">24 Meses</option>
-        </select>
-      </div>
+        <div class="form-group">
+          <label for="amount">Monto Solicitado (RD$):</label>
+          <input type="number" id="amount" value="10000" step="1000" min="1000" oninput="calculateLoan()">
+        </div>
 
-      <div class="form-group">
-        <label for="rate">Tasa de Interés Mensual Estimada (%):</label>
-        <input type="number" id="rate" value="3.0" step="0.1" min="0.1" oninput="calculateLoan()">
+        <div class="form-group" id="guarantee-group" style="display: none;">
+          <label for="guarantee-detail">Pertenencia / Garantía:</label>
+          <input type="text" id="guarantee-detail" placeholder="Ej. Joya de oro, Vehículo, TV, etc.">
+        </div>
       </div>
 
       <div class="result-box">
-        <p>CUOTA MENSUAL ESTIMADA</p>
-        <span id="monthly-payment">RD$ 0.00</span>
+        <p id="result-label">CUOTA ESTIMADA</p>
+        <span id="payment-amount">RD$ 0.00</span>
+        <small id="result-detail" style="color: var(--text-muted); font-weight: 600; display: block; margin-top: 0.4rem;"></small>
+      </div>
+    </div>
+
+    <!-- 2. PRE-FORMULARIO -->
+    <div class="card no-print">
+      <h2>2. Pre-Formulario de Solicitud</h2>
+      <p style="text-align: center; margin-bottom: 1.5rem; color: var(--text-muted); font-size: 0.95rem;">
+        Escribe tus datos para generar la planilla oficial que presentarás en tu cita.
+      </p>
+
+      <form id="loan-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="client-name">Nombre Completo *</label>
+            <input type="text" id="client-name" required placeholder="Ej. Juan Pérez">
+          </div>
+
+          <div class="form-group">
+            <label for="client-id">Cédula de Identidad *</label>
+            <input type="text" id="client-id" required placeholder="001-0000000-0">
+          </div>
+
+          <div class="form-group">
+            <label for="client-phone">Teléfono / WhatsApp *</label>
+            <input type="tel" id="client-phone" required placeholder="809-000-0000">
+          </div>
+
+          <div class="form-group">
+            <label for="client-work">Ocupación / Empleo</label>
+            <input type="text" id="client-work" placeholder="Ej. Empleado / Independiente">
+          </div>
+
+          <div class="form-group full-width">
+            <label for="client-address">Dirección de Residencia</label>
+            <input type="text" id="client-address" placeholder="Calle, Sector, Ciudad">
+          </div>
+        </div>
+
+        <button type="button" onclick="generateSheet()" class="btn btn-secondary">
+          <i class="fas fa-file-invoice"></i> Generar Planilla Oficial para Imprimir
+        </button>
+      </form>
+    </div>
+
+    <!-- 3. PLANILLA OFICIAL IMPRIMIBLE -->
+    <div id="print-sheet">
+      <div class="sheet-header">
+        <img src="logo.png" alt="ASOPRESTAMOS">
+        <div class="sheet-title">
+          <h3>ASOPRESTAMOS</h3>
+          <p>Planilla Oficial de Pre-Solicitud</p>
+          <small id="print-date" style="color: var(--text-muted); font-weight: 600;"></small>
+        </div>
       </div>
 
-      <a id="apply-btn" href="#" target="_blank" class="btn-apply">
-        <i class="fab fa-whatsapp"></i> Solicitar por WhatsApp
+      <div class="sheet-section-title">Datos del Solicitante</div>
+      <table class="sheet-table">
+        <tr>
+          <td class="label">Nombre Completo:</td>
+          <td id="print-name"></td>
+        </tr>
+        <tr>
+          <td class="label">Cédula de Identidad:</td>
+          <td id="print-id"></td>
+        </tr>
+        <tr>
+          <td class="label">Teléfono / WhatsApp:</td>
+          <td id="print-phone"></td>
+        </tr>
+        <tr>
+          <td class="label">Ocupación:</td>
+          <td id="print-work"></td>
+        </tr>
+        <tr>
+          <td class="label">Dirección:</td>
+          <td id="print-address"></td>
+        </tr>
+      </table>
+
+      <div class="sheet-section-title">Detalles de la Solicitud</div>
+      <table class="sheet-table">
+        <tr>
+          <td class="label">Monto Solicitado:</td>
+          <td id="print-amount" style="font-weight: 700;"></td>
+        </tr>
+        <tr>
+          <td class="label">Modalidad de Préstamo:</td>
+          <td id="print-type"></td>
+        </tr>
+        <tr>
+          <td class="label">Estructura de Pago:</td>
+          <td id="print-structure"></td>
+        </tr>
+        <tr id="print-guarantee-row" style="display: none;">
+          <td class="label">Garantía Declarada:</td>
+          <td id="print-guarantee-val"></td>
+        </tr>
+        <tr>
+          <td class="label">Monto por Cuota / Total:</td>
+          <td id="print-payment" class="highlight"></td>
+        </tr>
+      </table>
+
+      <div class="signature-area">
+        <div class="signature-box">Firma del Solicitante</div>
+        <div class="signature-box">Firma Autorizada ASOPRESTAMOS</div>
+      </div>
+    </div>
+
+    <!-- 4. BOTONES DESPUÉS DE GENERAR -->
+    <div id="action-buttons" class="no-print" style="display: none; text-align: center;">
+      <button onclick="window.print()" class="btn" style="background: #2563eb; color: white; margin-bottom: 1rem;">
+        <i class="fas fa-print"></i> Imprimir o Guardar en PDF
+      </button>
+
+      <a id="wa-send-btn" href="#" target="_blank" class="btn">
+        <i class="fab fa-whatsapp"></i> Enviar Resumen a WhatsApp
       </a>
     </div>
 
-    <!-- BENEFICIOS -->
-    <div class="features">
-      <div class="feature-item">
-        <i class="fas fa-bolt"></i>
-        <h3>Respuesta Rápida</h3>
-        <p>Evaluamos tu solicitud de inmediato sin papeleos innecesarios.</p>
-      </div>
-      <div class="feature-item">
-        <i class="fas fa-hand-holding-usd"></i>
-        <h3>Cuotas Asequibles</h3>
-        <p>Plazos y tasas ajustadas a tu capacidad financiera.</p>
-      </div>
-      <div class="feature-item">
-        <i class="fas fa-shield-alt"></i>
-        <h3>Proceso Seguro</h3>
-        <p>Atención directa y confidencial para tu tranquilidad.</p>
+    <!-- CARACTERÍSTICAS -->
+    <div class="card no-print" style="margin-top: 3rem;">
+      <h3 style="text-align: center; color: var(--primary); margin-bottom: 1rem;">Nuestras Modalidades de Crédito</h3>
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="fas fa-calendar-week"></i>
+          <h4>SAM Semanal</h4>
+          <p>10 pagos semanales fijados con un 12% de interés.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-calendar-alt"></i>
+          <h4>SAM Quincenal</h4>
+          <p>5 pagos quincenales fijados con un 12% de interés.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-hand-holding-usd"></i>
+          <h4>Dinero Arrendado</h4>
+          <p>Un solo pago al término del periodo con un 20% de interés.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-gem"></i>
+          <h4>Con Garantía</h4>
+          <p>Pertenencias de valor en respaldo con un 15% de interés.</p>
+        </div>
       </div>
     </div>
+
   </main>
 
-  <!-- BOTÓN FLOTANTE DE WHATSAPP -->
-  <a id="float-wa" href="#" target="_blank" class="whatsapp-btn" title="Contactar por WhatsApp">
+  <!-- ================================================================= -->
+  <!-- AQUÍ COLOCARÁS EL CÓDIGO EMBEBIDO DE TU BOT DE IA CUANDO ESTÉ LISTO -->
+  <!-- Ej. <script src="https://cdn.bot.com/embed.js"></script>           -->
+  <!-- ================================================================= -->
+
+  <!-- BOTÓN FLOTANTE WHATSAPP -->
+  <a id="float-wa" href="#" target="_blank" class="whatsapp-btn no-print" title="Contactar por WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <footer>
+  <footer class="no-print">
     <p>&copy; 2026 ASOPRESTAMOS. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- SCRIPT LÓGICO DE LA CALCULADORA -->
   <script>
-    const whatsappNumber = "18295144178"; // Reemplazar con el número de Luis
+    const whatsappNumber = "18090000000"; // Sustituir por el teléfono real de WhatsApp
 
     function calculateLoan() {
+      const type = document.getElementById('loan-type').value;
       const amount = parseFloat(document.getElementById('amount').value) || 0;
-      const months = parseInt(document.getElementById('months').value) || 1;
-      const monthlyRate = (parseFloat(document.getElementById('rate').value) || 0) / 100;
+      const guaranteeGroup = document.getElementById('guarantee-group');
 
-      if (amount <= 0 || monthlyRate <= 0) {
-        document.getElementById('monthly-payment').innerText = "RD$ 0.00";
+      if (type === 'garantia') {
+        guaranteeGroup.style.display = 'block';
+      } else {
+        guaranteeGroup.style.display = 'none';
+      }
+
+      let payment = 0;
+      let labelText = "";
+      let detailText = "";
+
+      if (amount <= 0) {
+        document.getElementById('payment-amount').innerText = "RD$ 0.00";
+        document.getElementById('result-detail').innerText = "";
         return;
       }
 
-      const monthlyPayment = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -months));
-      const formattedPayment = monthlyPayment.toLocaleString('es-DO', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      if (type === 'sam_semanal') {
+        labelText = "CUOTA SEMANAL (10 SEMANAS)";
+        const total = amount * 1.12;
+        payment = total / 10;
+        detailText = `Total a pagar: RD$ ${total.toLocaleString('es-DO', {minimumFractionDigits: 2})} en 10 cuotas semanales.`;
+      } else if (type === 'sam_quincenal') {
+        labelText = "CUOTA QUINCENAL (5 QUINCENAS)";
+        const total = amount * 1.12;
+        payment = total / 5;
+        detailText = `Total a pagar: RD$ ${total.toLocaleString('es-DO', {minimumFractionDigits: 2})} en 5 cuotas quincenales.`;
+      } else if (type === 'arrendado') {
+        labelText = "PAGO ÚNICO AL FINALIZAR";
+        const total = amount * 1.20;
+        payment = total;
+        detailText = `Monto prestado: RD$ ${amount.toLocaleString('es-DO')} + 20% interés (RD$ ${(amount*0.20).toLocaleString('es-DO')}).`;
+      } else if (type === 'garantia') {
+        labelText = "INTERÉS DE PRÉSTAMO CON GARANTÍA (15%)";
+        const interest = amount * 0.15;
+        const total = amount + interest;
+        payment = total;
+        detailText = `Monto acumulado con garantía: RD$ ${total.toLocaleString('es-DO', {minimumFractionDigits: 2})}.`;
+      }
 
-      document.getElementById('monthly-payment').innerText = "RD$ " + formattedPayment;
+      document.getElementById('result-label').innerText = labelText;
+      document.getElementById('payment-amount').innerText = "RD$ " + payment.toLocaleString('es-DO', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      document.getElementById('result-detail').innerText = detailText;
 
-      const message = encodeURIComponent(`Hola ASOPRESTAMOS, me gustaría solicitar un préstamo de RD$ ${amount.toLocaleString('es-DO')} a un plazo de ${months} meses (Cuota estimada: RD$ ${formattedPayment}).`);
-      
-      const waLink = `https://wa.me/${whatsappNumber}?text=${message}`;
-      
-      document.getElementById('apply-btn').href = waLink;
-      document.getElementById('float-wa').href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Hola ASOPRESTAMOS, quisiera información sobre un préstamo.')}`;
+      document.getElementById('float-wa').href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Hola ASOPRESTAMOS, quisiera consultar sobre un préstamo.')}`;
     }
 
+    function generateSheet() {
+      const name = document.getElementById('client-name').value.trim();
+      const id = document.getElementById('client-id').value.trim();
+      const phone = document.getElementById('client-phone').value.trim();
+      const work = document.getElementById('client-work').value.trim() || "No especificada";
+      const address = document.getElementById('client-address').value.trim() || "No especificada";
+
+      if (!name || !id || !phone) {
+        alert("Por favor, completa los campos obligatorios: Nombre, Cédula y Teléfono.");
+        return;
+      }
+
+      const amount = document.getElementById('amount').value;
+      const typeSelect = document.getElementById('loan-type');
+      const typeText = typeSelect.options[typeSelect.selectedIndex].text;
+      const paymentText = document.getElementById('payment-amount').innerText;
+      const detailText = document.getElementById('result-detail').innerText;
+      const guaranteeVal = document.getElementById('guarantee-detail').value.trim();
+
+      document.getElementById('print-name').innerText = name;
+      document.getElementById('print-id').innerText = id;
+      document.getElementById('print-phone').innerText = phone;
+      document.getElementById('print-work').innerText = work;
+      document.getElementById('print-address').innerText = address;
+      
+      document.getElementById('print-amount').innerText = "RD$ " + parseFloat(amount).toLocaleString('es-DO');
+      document.getElementById('print-type').innerText = typeText;
+      document.getElementById('print-structure').innerText = detailText;
+      document.getElementById('print-payment').innerText = paymentText;
+      document.getElementById('print-date').innerText = "Fecha: " + new Date().toLocaleDateString('es-DO');
+
+      const guaranteeRow = document.getElementById('print-guarantee-row');
+      if (typeSelect.value === 'garantia' && guaranteeVal) {
+        guaranteeRow.style.display = 'table-row';
+        document.getElementById('print-guarantee-val').innerText = guaranteeVal;
+      } else {
+        guaranteeRow.style.display = 'none';
+      }
+
+      const sheet = document.getElementById('print-sheet');
+      const actions = document.getElementById('action-buttons');
+      
+      sheet.style.display = "block";
+      actions.style.display = "block";
+
+      const waMsg = encodeURIComponent(`Hola ASOPRESTAMOS, he completado mi pre-solicitud:\n- *Nombre:* ${name}\n- *Cédula:* ${id}\n- *Monto:* RD$ ${amount}\n- *Modalidad:* ${typeText}\n- *Cuota/Total:* ${paymentText}\nQuedo a la espera para coordinar la cita.`);
+      document.getElementById('wa-send-btn').href = `https://wa.me/${whatsappNumber}?text=${waMsg}`;
+
+      sheet.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Inicializar simulación
     calculateLoan();
   </script>
-
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="A7ETOsDGBmGHJR6sniMis";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
 </body>
 </html>
