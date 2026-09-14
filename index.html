@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ASOPRESTAMOS - Préstamos Personales y Garantizados</title>
-  <!-- Iconos FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -34,25 +33,25 @@
     .hero {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
       color: white;
-      padding: 3.5rem 1.5rem 5rem;
+      padding: 3rem 1.2rem 4.5rem;
       text-align: center;
       border-bottom: 3px solid var(--accent);
     }
 
     .main-logo {
       width: 100%;
-      max-width: 230px;
+      max-width: 200px;
       height: auto;
       border-radius: 16px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.3);
       border: 2px solid var(--accent);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .hero h1 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       color: #ffffff;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
     }
 
     .hero h1 span {
@@ -60,7 +59,7 @@
     }
 
     .hero p {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: #e2e8f0;
       max-width: 650px;
       margin: 0 auto;
@@ -69,14 +68,14 @@
     /* CONTENEDOR PRINCIPAL */
     .container {
       max-width: 850px;
-      margin: -3.5rem auto 3rem;
-      padding: 0 1.2rem;
+      margin: -3rem auto 3rem;
+      padding: 0 1rem;
     }
 
     /* CARDS */
     .card {
       background: white;
-      padding: 2.2rem;
+      padding: 1.8rem;
       border-radius: 16px;
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
       border-top: 5px solid var(--accent);
@@ -84,9 +83,9 @@
     }
 
     .card h2 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       color: var(--primary);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
       text-align: center;
       font-weight: 700;
     }
@@ -137,7 +136,7 @@
     }
 
     .result-box p {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
       font-weight: 700;
       text-transform: uppercase;
@@ -145,7 +144,7 @@
 
     .result-box span {
       display: block;
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 800;
       color: var(--primary);
       margin-top: 0.2rem;
@@ -164,7 +163,7 @@
       padding: 1rem;
       border: none;
       border-radius: 8px;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       cursor: pointer;
       margin-top: 1rem;
@@ -189,7 +188,7 @@
     /* TARJETAS DE SERVICIOS */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.2rem;
       margin-top: 1rem;
     }
@@ -218,51 +217,57 @@
       color: var(--text-muted);
     }
 
-    /* PLANILLA IMPRIMIBLE ESTÉTICA */
+    /* PLANILLA IMPRIMIBLE / DIGITAL AJUSTADA */
     #print-sheet {
       display: none;
       background: white;
-      padding: 2.5rem;
+      padding: 1.5rem;
       border: 2px solid var(--primary);
       border-radius: 12px;
       margin-top: 2rem;
       box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      overflow-x: hidden;
     }
 
     .sheet-header {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
+      gap: 1rem;
       border-bottom: 3px solid var(--accent);
-      padding-bottom: 1.2rem;
+      padding-bottom: 1rem;
       margin-bottom: 1.5rem;
     }
 
     .sheet-header img {
-      max-width: 160px;
+      max-width: 120px;
       height: auto;
       border-radius: 8px;
     }
 
     .sheet-title {
       text-align: right;
+      flex: 1;
+      min-width: 180px;
     }
 
     .sheet-title h3 {
       color: var(--primary);
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 800;
+      line-height: 1.2;
     }
 
     .sheet-title p {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
       font-weight: 600;
     }
 
     .sheet-section-title {
       color: var(--primary);
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
       margin: 1.2rem 0 0.6rem;
       border-left: 4px solid var(--accent);
@@ -273,43 +278,64 @@
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 1.5rem;
+      table-layout: fixed;
     }
 
     .sheet-table td {
-      padding: 0.75rem 1rem;
+      padding: 0.65rem 0.8rem;
       border: 1px solid #e2e8f0;
-      font-size: 0.95rem;
+      font-size: 0.88rem;
+      word-wrap: break-word;
     }
 
     .sheet-table td.label {
       background: #f1f5f9;
       font-weight: 700;
       color: var(--primary-dark);
-      width: 35%;
+      width: 40%;
     }
 
     .sheet-table td.highlight {
       font-weight: 800;
       color: var(--primary);
-      font-size: 1.1rem;
+      font-size: 1rem;
       background: #f8fafc;
     }
 
     .signature-area {
-      margin-top: 4.5rem;
+      margin-top: 3.5rem;
+      margin-bottom: 2rem;
       display: flex;
-      justify-content: space-between;
-      padding: 0 2rem;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-around;
+      padding: 0 1rem;
     }
 
     .signature-box {
       border-top: 1.5px solid #1e293b;
-      width: 240px;
+      width: 200px;
       text-align: center;
-      padding-top: 0.6rem;
-      font-size: 0.9rem;
+      padding-top: 0.5rem;
+      font-size: 0.85rem;
       font-weight: 700;
       color: var(--text-dark);
+    }
+
+    /* MEDIA QUERIES PARA CELULARES */
+    @media (max-width: 500px) {
+      .sheet-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .sheet-title {
+        text-align: center;
+      }
+      .signature-area {
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+      }
     }
 
     /* ESTILOS DE IMPRESIÓN */
@@ -335,20 +361,20 @@
       }
     }
 
-    /* BOTÓN WHATSAPP FLOTANTE */
+    /* BOTÓN WHATSAPP FLOTANTE A LA IZQUIERDA */
     .whatsapp-btn {
       position: fixed;
       bottom: 25px;
       left: 25px;
       background-color: #25d366;
       color: white;
-      width: 60px;
-      height: 60px;
+      width: 55px;
+      height: 55px;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 32px;
+      font-size: 30px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       z-index: 999;
       text-decoration: none;
@@ -366,7 +392,6 @@
 </head>
 <body>
 
-  <!-- HERO SECTION CON LOGO -->
   <section class="hero no-print">
     <img src="logo.png" alt="ASOPRESTAMOS Logo" class="main-logo">
     <h1>Soluciones Financieras <span>ASOPRESTAMOS</span></h1>
@@ -375,7 +400,6 @@
 
   <main class="container">
     
-    <!-- 1. SIMULADOR CON NORMAS DE LUIS -->
     <div class="card no-print">
       <h2>1. Calculadora de Préstamo</h2>
       
@@ -408,7 +432,6 @@
       </div>
     </div>
 
-    <!-- 2. PRE-FORMULARIO -->
     <div class="card no-print">
       <h2>2. Pre-Formulario de Solicitud</h2>
       <p style="text-align: center; margin-bottom: 1.5rem; color: var(--text-muted); font-size: 0.95rem;">
@@ -449,7 +472,6 @@
       </form>
     </div>
 
-    <!-- 3. PLANILLA OFICIAL IMPRIMIBLE -->
     <div id="print-sheet">
       <div class="sheet-header">
         <img src="logo.png" alt="ASOPRESTAMOS">
@@ -514,8 +536,7 @@
       </div>
     </div>
 
-    <!-- 4. BOTONES DESPUÉS DE GENERAR -->
-    <div id="action-buttons" class="no-print" style="display: none; text-align: center;">
+    <div id="action-buttons" class="no-print" style="display: none; text-align: center; margin-top: 1.5rem;">
       <button onclick="window.print()" class="btn" style="background: #2563eb; color: white; margin-bottom: 1rem;">
         <i class="fas fa-print"></i> Imprimir o Guardar en PDF
       </button>
@@ -525,7 +546,6 @@
       </a>
     </div>
 
-    <!-- CARACTERÍSTICAS -->
     <div class="card no-print" style="margin-top: 3rem;">
       <h3 style="text-align: center; color: var(--primary); margin-bottom: 1rem;">Nuestras Modalidades de Crédito</h3>
       <div class="services-grid">
@@ -554,12 +574,18 @@
 
   </main>
 
-  <!-- ================================================================= -->
-  <!-- AQUÍ COLOCARÁS EL CÓDIGO EMBEBIDO DE TU BOT DE IA CUANDO ESTÉ LISTO -->
-  <!-- Ej. <script src="https://cdn.bot.com/embed.js"></script>           -->
-  <!-- ================================================================= -->
-
-  <!-- BOTÓN FLOTANTE WHATSAPP -->
+  <script>
+    window.embeddedChatbotConfig = {
+      chatbotId: "A7ETOsDGBmGHJR6sniMis",
+      domain: "www.chatbase.co"
+    }
+  </script>
+  <script
+    src="https://www.chatbase.co/embed.min.js"
+    chatbotId="A7ETOsDGBmGHJR6sniMis"
+    domain="www.chatbase.co"
+    defer>
+  </script>
   <a id="float-wa" href="#" target="_blank" class="whatsapp-btn no-print" title="Contactar por WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
@@ -569,7 +595,9 @@
   </footer>
 
   <script>
-    const whatsappNumber = "18090000000"; // Sustituir por el teléfono real de WhatsApp
+    // ⚠️ COLOCA AQUÍ EL NÚMERO REAL DE WHATSAPP DE LUIS (con código de país, sin el signo '+')
+    // Ejemplo para RD: "18091234567" o "18291234567"
+    const numeroTelefonoLuis = "18090000000"; 
 
     function calculateLoan() {
       const type = document.getElementById('loan-type').value;
@@ -619,7 +647,7 @@
       document.getElementById('payment-amount').innerText = "RD$ " + payment.toLocaleString('es-DO', {minimumFractionDigits: 2, maximumFractionDigits: 2});
       document.getElementById('result-detail').innerText = detailText;
 
-      document.getElementById('float-wa').href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Hola ASOPRESTAMOS, quisiera consultar sobre un préstamo.')}`;
+      document.getElementById('float-wa').href = `https://wa.me/${numeroTelefonoLuis}?text=${encodeURIComponent('Hola ASOPRESTAMOS, quisiera consultar sobre un préstamo.')}`;
     }
 
     function generateSheet() {
@@ -667,8 +695,24 @@
       sheet.style.display = "block";
       actions.style.display = "block";
 
-      const waMsg = encodeURIComponent(`Hola ASOPRESTAMOS, he completado mi pre-solicitud:\n- *Nombre:* ${name}\n- *Cédula:* ${id}\n- *Monto:* RD$ ${amount}\n- *Modalidad:* ${typeText}\n- *Cuota/Total:* ${paymentText}\nQuedo a la espera para coordinar la cita.`);
-      document.getElementById('wa-send-btn').href = `https://wa.me/${whatsappNumber}?text=${waMsg}`;
+      // Mensaje formateado para enviar al WhatsApp de Luis
+      let textMsg = `📋 *NUEVA PRE-SOLICITUD DE PRÉSTAMO*\n\n` +
+                    `👤 *Solicitante:* ${name}\n` +
+                    `🪪 *Cédula:* ${id}\n` +
+                    `📞 *Teléfono:* ${phone}\n` +
+                    `💼 *Ocupación:* ${work}\n` +
+                    `🏠 *Dirección:* ${address}\n\n` +
+                    `💰 *Monto Solicitado:* RD$ ${parseFloat(amount).toLocaleString('es-DO')}\n` +
+                    `📌 *Modalidad:* ${typeText}\n`;
+      
+      if (typeSelect.value === 'garantia' && guaranteeVal) {
+        textMsg += `💎 *Garantía:* ${guaranteeVal}\n`;
+      }
+
+      textMsg += `📊 *Calculo:* ${paymentText} (${detailText})`;
+
+      const waMsg = encodeURIComponent(textMsg);
+      document.getElementById('wa-send-btn').href = `https://wa.me/${18295144178}?text=${waMsg}`;
 
       sheet.scrollIntoView({ behavior: 'smooth' });
     }
@@ -676,8 +720,6 @@
     // Inicializar simulación
     calculateLoan();
   </script>
-<script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="A7ETOsDGBmGHJR6sniMis";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
+
 </body>
 </html>
